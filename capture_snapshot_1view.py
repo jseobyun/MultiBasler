@@ -36,8 +36,8 @@ if __name__ == "__main__":
     while True:
         if counter < 0: # for easy check
             if not camera.IsGrabbing():
-                camera.StartGrabbing()
-            if camera.IsGrabbing():
+                camera.StartGrabbing(pylon.GrabStrategy_LatestImageOnly)
+            else:
                 grabResult = camera.RetrieveResult(5000, pylon.TimeoutHandling_ThrowException)
 
                 if grabResult.GrabSucceeded():
@@ -51,7 +51,7 @@ if __name__ == "__main__":
 
         k = cv2.waitKey(1)
         if k == 32 and counter >= 0:
-            camera.StartGrabbing()
+            camera.StartGrabbing(pylon.GrabStrategy_LatestImageOnly)
             if camera.IsGrabbing():
                 grabResult = camera.RetrieveResult(5000, pylon.TimeoutHandling_ThrowException)
 

@@ -32,7 +32,7 @@ if __name__ == "__main__":
     set_exposure_time(camera, 5000)
 
     converter = get_converter()
-    camera.StartGrabbing()
+    camera.StartGrabbing(pylon.GrabStrategy_LatestImageOnly)
 
     counter = 0
     while camera.IsGrabbing():
