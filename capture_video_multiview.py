@@ -65,12 +65,12 @@ if __name__ == "__main__":
         else:
             if not args.no_vis:
                 for i in range(len(devices)):
-                    cv2.imshow(str(i), cv2.resize(canvas, (1280, 1024)))
+                    cv2.imshow(str(i), cv2.resize(img_repos[i], (1280, 1024)))
 
             if not args.no_save:
                 for i in range(len(devices)):
                     save_path = os.path.join(save_dirs[i],f"{counter:05d}.png")
-                    cv2.imwrite(save_path, canvas)
+                    cv2.imwrite(save_path, img_repos[i])
                     print(f"View {i} Image is saved at {save_path}")
             if args.sleep:
                 intv = float(args.sleep) / 1000  # ms
